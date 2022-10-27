@@ -1,0 +1,25 @@
+{% extends 'firstapp/base.html' %}
+{% block title %}画像判定結果{% endblock %}
+{% load static %}
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'firstapp/css/result.css' %}">
+{% endblock %}
+{% block content %}
+<div>
+    <h4 class="mt-4 mb-5  border-bottom" id="title">画像判定結果</h4>
+    <table class="table">
+        <tbody></tbody>
+            <tr>
+                <td>推定ラベル</th>
+                <td>{{predicted}}</td>
+            </tr>
+            <tr>
+                <th>推定確率</th>
+                <td>{{percentage}}%</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{% url 'firstapp:index' %}" class="btn btn-secondary">戻る</a>
+</div>
+{% endblock %}
