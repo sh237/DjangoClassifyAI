@@ -1,0 +1,28 @@
+h1{
+    text-align: center;
+  }
+  
+  div.reg{
+    background-color: #EEEEEE;
+    margin-left: 15%;
+    margin-right: 15%;
+  }
+  
+  table.reg_form{
+    width: 100%;
+    border-spacing: 10px 30px;
+    padding-left:20px;
+  }
+  
+  .btn{
+      color: #fff;
+      background-color: #000033;
+      font-size: 1.0em;
+      padding: 10px 30px;
+      margin-left: 80%;
+  }
+  
+  .btn:hover{
+    color: #fff;
+    background: #000099;
+  }

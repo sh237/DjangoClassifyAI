@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ja" dir="ltr">
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="stylesheet" href='{% static "accounts/css/login.css" %}'/>
+
+</head>
+<body>
+<h1>ログイン画面</h1>
+
+<div class="reg">
+  <form method="post" action="{% url 'accounts:login' %}">
+    {% csrf_token %}
+
+    <table class="reg_form">
+    <tr>
+    <td><label for="email">ユーザーID:</label></td>
+    <td><input type="text" name="email"></td>
+    <td><label for="password">パスワード：</label></td>
+    <td><input type="password" name="password"></td>
+    </tr>
+    </table>
+
+    <input type="submit" class="btn" value="Login">
+ </form>
+</div>
+   <p class="message">アカウントをお持ちですか？：
+   <a href="{% url 'accounts:register' %}" class="register-btn">アカウントを作成</a>
+   </p>
+</body>
+</html>

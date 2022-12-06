@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ja" dir="ltr">
+
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="stylesheet" href='{% static "accounts/css/register.css" %}'/>
+</head>
+
+<body>
+<h1>新規登録</h1>
+
+ {% if AccountCreate %}
+   <h1>登録完了!</h1>
+   <a class="btn">戻る</a>
+
+ {% else %}
+   <div class="reg">
+   <table class="reg_form">
+
+   <form enctype="multipart/form-data" method="post">
+   {% csrf_token %}
+   {{ account_form.as_table }}
+   {{ add_account_form.as_table }}
+   <tr><td></td><td>
+   <input class="btn" type="submit" name="" value="登録">
+   </td></tr>
+   </form>
+
+   </table>
+   
+   </div>
+   <a class="btn" style="position:absolute;top:80%;right:80%;width:3%;" href="{% url 'accounts:login'%}">戻る</a>
+ {% endif %}
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+imagecls/
+db.splite3
+__pycache__/
+accounts/__pycache__
+accounts/migrations/__pycache__
+accounts/tests/__pycache__
+imagecls/__pycache__
+imagecls/migrations/__pycache__
+imagecls/tests/__pycache__
+image2text/ml_models
+summarization/ml_models
+firstapp/ml_models
