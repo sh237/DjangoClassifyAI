@@ -1,0 +1,33 @@
+{% extends 'image2text/base.html' %}
+{% block title %}画像判定結果{% endblock %}
+{% load static %}
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'image2text/css/result.css' %}">
+{% endblock %}
+{% block content %}
+<div>
+    <h4 class="mt-4 mb-5  border-bottom" id="title">説明文生成結果</h4>
+    <table class="table">
+        <tbody></tbody>
+            <tr>
+                <td>----------------------入力画像----------------------</th>
+                <img src="data:image/png;base64,{{ image | safe }}">
+            </tr>
+            <tr>
+                <td>説明文(日本語)</th>
+                <td>{{japanese}}</td>
+            </tr>
+            <tr>
+                <td>説明文(英語)</th>
+                <td>{{english}}</td>
+            </tr>
+            <tr>
+                <td>画像において着目した場所を示した図</th>
+                <img src="data:image/png;base64,{{ graph | safe }}">
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{% url 'image2text:index' %}" class="btn btn-secondary">戻る</a>
+</div>
+{% endblock %}

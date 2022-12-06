@@ -1,0 +1,70 @@
+{% extends 'firstapp/base.html' %}
+{% load static %}
+{% block title %}画像判定AIアプリ{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'firstapp/css/index.css' %}">
+{% endblock %}
+{% block content %}
+{% load widget_tweaks %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" ></script>
+<!-- <div>
+    <h4 class="mt-4 mb-5  border-bottom">画像判定AIアプリ</h4>
+    <p>画像ファイルを選択して推定ボタンをクリックしてください</p>
+    <form action="{% url 'firstapp:predict' %}" method="post" class="form" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="from-group">
+            <div class="custom-file">
+                {{form.image}}
+                <label class="custom-file-label" for="customFile">
+                    推定したいファイルを選択してください
+                </label>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">推定する!</button>
+    </form>
+</div> -->
+<div class="loader" id="loader">Loading...</div>
+<div id="form-container">
+<h4 class="mt-4 mb-5  border-bottom" id="title">NIKEスニーカー判定AIアプリ</h4>
+<form action="{% url 'firstapp:predict' %}" class="post-form-to-edit-portfolio" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+      <div class="form-row">
+        <div class="col-md-12">
+          <div class="upload-portfolio-image-btn">
+            ここをクリックで画像をアップロード<br>
+            JPEG / PNG 形式に対応しています
+          </div>
+          {% render_field form.image class="custom-file-input upload-portfolio-image" onClick="openFile()" %}
+          <script src="{% static 'firstapp/javascript/isUploaded.js' %}"></script>
+          {% for error in form.image.errors %}
+          <span class="text-warning">{{ error }}</span>
+          {% endfor %}
+        </div>
+      </div>
+      <hr>
+      <div class="form-row portfolio-image-group">
+        <div class="form-group col-md-12">
+            <div class="responsive-img-wrapper portfolio-image">
+              <!-- <div class="responsive-img" style="background-image: url(${e.target.result}) width:100% height:100%"> -->
+                <p id="uploaded-img-path"></p>
+                <img id="uploaded-img" width="700">
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="form-btn">
+      <button type="button" class="btn btn-outline-secondary btn-to-cancel-upload" id="btn-to-cancel-upload">キャンセル</button>
+      <button type="submit" class="btn btn-secondary btn-to-upload-images" id="btn-to-submit">推定する!</button>
+    </div>
+  </form>
+</div>
+<script src="{% static 'firstapp/javascript/uploadImageBtn.js' %}"></script>
+<script src="{% static 'firstapp/javascript/BottomBtn.js' %}"></script>
+<script>
+    $(document).ready(function() {
+        $('#loader').hide();
+    });
+    </script>
+{% endblock %}
